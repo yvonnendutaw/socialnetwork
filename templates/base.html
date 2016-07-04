@@ -37,7 +37,12 @@
 <div class="row">
     <div class="main">
         <nav>
-            <a href="{{ url_for('index')}}"></a>
+            <a href="{{ url_for('index')}}">all</a>
+
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('stream', username=current_user.username) }}" >Following</a>
+            <a href="{{ url_for('post') }}" class="new"> Create New post</a>
+       {% endif %}
         </nav>
         {% block content %}{% endblock %}
     </div>

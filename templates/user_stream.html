@@ -1,0 +1,36 @@
+{% extends "stream.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="small-6 columns">
+        <h1>
+            {{ user.username }}
+        </h1>
+
+    </div>
+    <div class="small-6 columns">
+        <h5>Posts</h5>
+        <p>
+            {{ user.posts.count}}
+        </p>
+    </div>
+      <div class="small-6 columns">
+        <h5>Followers</h5>
+        <p>
+            0
+        </p>
+    </div>
+      <div class="small-6 columns">
+        <h5>Following</h5>
+        <p>
+          0
+        </p>
+    </div>
+        <div class="small-6 columns">
+      <!--follow and unfollow button-->
+
+    </div>
+
+    </div>
+{{ super() }}
+{% endblock %}

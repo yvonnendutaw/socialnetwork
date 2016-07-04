@@ -42,8 +42,9 @@ def after_request(response):
 
 @app.route('/')
 def index():
-    current_user = None
-    return render_template('base.html', current_user=current_user)
+    """Home page view, shows a stream of all Social App posts"""
+    stream = models.Post.select().limit(100)
+    return render_template('stream.html', stream=stream)
 
 
 @app.route('/register', methods=('GET', 'POST'))
@@ -72,7 +73,7 @@ def login():
             if check_password_hash(user.password, form.password.data):
                 load_user(user)
                 flash("you have been logged in")
-                return redirect(url_for('post', current_user=current_user))
+                return redirect(url_for('index', current_user=current_user))
             else:
                 flash("you email or password doesn't match", "error")
     return render_template('login.html', form=form)
@@ -98,10 +99,18 @@ def post():
 
 
 @app.route('/stream')
-def stream():
-    """Home page view, shows a stream of all Social App posts"""
-    stream = models.Post.select().limit(100)
-    return render_template('stream.html', stream=stream)
+@app.route('/stream/<username>')
+def stream(username=None):
+    template = 'stream.html'
+    if username and username != current_user.username:
+        user = models.User.select().where(models.User.username ** username).get()
+        stream = user.posts.limit(100)
+    else:
+        stream = current_user.get_stream().limit(100)
+        user = current_user
+    if username:
+        template = 'user_stream.html'
+    return render_template(template, stream=stream, user=user)
 
 
 if __name__ == '__main__':
