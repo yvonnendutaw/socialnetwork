@@ -17,17 +17,26 @@
       <div class="small-6 columns">
         <h5>Followers</h5>
         <p>
-            0
+          {{ user.followers().count() }}
         </p>
     </div>
       <div class="small-6 columns">
         <h5>Following</h5>
         <p>
-          0
+          {{ user.following().count() }}
         </p>
     </div>
         <div class="small-6 columns">
       <!--follow and unfollow button-->
+{% if current_user.is.authenticated() %}
+            {% if user != current_user.%}
+            {% if not user in current_user.following() %}
+            <a href="{{ url_for{'follow',username=user.username }}" class="small">Follow</a>
+            {% else %}
+            <a href="{{ url_for{'unfollow',username=user.username }}" class="small">unFollow</a>
+            {% endif %}
+            {% endif %}
+            {% endif %}
 
     </div>
 

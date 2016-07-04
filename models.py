@@ -29,6 +29,27 @@ class User(UserMixin, peewee.Model):
             (Post.user == self)
         )
 
+    def following(self):
+        """ the users that we are following"""
+        return (
+            User.select().join(
+                Relationship, on=Relationship.to_user
+            ).where(
+                Relationship.from_user == self
+            )
+        )
+
+    def followers(self):
+        """Get users following current user """
+        return (
+            User.select().join(
+                Relationship, on=Relationship.from_user
+            ).where(
+                Relationship.from_user == self
+            )
+        )
+
+
     @property
     def is_authenticated(self):
         return True
@@ -77,6 +98,7 @@ class Post(peewee.Model):
         database = DATABASE
         order_by = ('-timestamp',)
 
+
 class Student(UserMixin, peewee.Model):
     username = peewee.CharField(unique=True)
     email = peewee.CharField(unique=True)
@@ -87,6 +109,18 @@ class Student(UserMixin, peewee.Model):
     class Meta:
         database = DATABASE
         order_by = ('-joined_at',)
+
+
+class Relationship(peewee.Model):
+    from_user = ForeignKey(User, related_name="relationships")
+    to_user = ForeignKey(User, related_name="related_to")
+
+    class Meta:
+        database = DATABASE
+        indexes = (
+            (('from_user', 'to_user'), True)
+        )
+
 
 def initialize():
     DATABASE.connect()
