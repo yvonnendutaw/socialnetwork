@@ -1,6 +1,6 @@
-from flask import (Flask, g, render_template, flash, redirect, url_for)
+from flask import (Flask, g, render_template, flash, redirect, url_for, abort)
 from flask_bcrypt import check_password_hash
-from flask_login import LoginManager, logout_user, login_required, current_user
+from flask_login import LoginManager, logout_user, login_required, current_user, login_user
 
 import forms
 import models
@@ -20,7 +20,9 @@ login_manager.login_view = 'login'
 @login_manager.user_loader
 def load_user(userid):
     try:
-        return models.User.get(models.User.id == userid)
+        return models.User.select().where(
+            models.User.id == int(userid)
+        ).get()
     except models.DoesNotExist:
         return None
 
@@ -47,64 +49,68 @@ def index():
     return render_template('stream.html', stream=stream)
 
 
-@app.route('/register', methods=('GET', 'POST'))
+@app.route('/register',methods= ('GET', 'POST'))
 def register():
-    form = forms.RegisterForm()
-    if form.validate_on_submit():
-        flash('you registered', "success")
-        models.User.create_user(
-            username=form.username.data,
-            email=form.email.data,
-            password=form.password.data)
-        return redirect(url_for('index'))
-    return render_template('register.html', form=form)
+	form = forms.RegisterForm()
+	if form.validate_on_submit():
+		flash('you registered',"success")
+		models.User.create_user(
+			username = form.username.data,
+			email = form.email.data,
+			password = form.password.data)
+		return redirect(url_for('login'))
+	return render_template('register.html', form = form)
 
-
-@app.route('/login', methods=('GET', 'POST'))
+@app.route('/login', methods = ('GET', 'POST'))
 def login():
-    form = forms.LoginForm()
-    if form.validate_on_submit():
-        try:
-            user = models.User.get(models.User.email == form.email.data)
-        except models.DoesNotExist:
-            flash("you email or password doesn't match", "error")
+	form = forms.LoginForm()
+	if form.validate_on_submit():
+		try:
+			user = models.User.get(models.User.email == form.email.data)
+		except models.DoesNotExist:
+			flash("you email or password doesn't match", "error")
 
-        else:
-            if check_password_hash(user.password, form.password.data):
-                load_user(user)
-                flash("you have been logged in")
-                return redirect(url_for('index', current_user=current_user))
-            else:
-                flash("you email or password doesn't match", "error")
-    return render_template('login.html', form=form)
-
+		else:
+			if check_password_hash(user.password, form.password.data):
+				login_user(user)
+				flash("you have been loged in")
+				return redirect(url_for('index'))
+			else:
+				flash("you email or password doesn't match", "error")
+	return render_template('login.html', form = form)
 
 @app.route('/logout')
 @login_required
 def logout():
-    logout_user()
-    flash("You've logged out ! welcome back")
-    return redirect(url_for('index'))
+	logout_user()
+	flash("You've loged out ! wellcome back")
+	return redirect(url_for('index'))
 
-
-@app.route('/post', methods=('GET', 'POST'))
+@app.route('/new_post', methods = ('GET', 'POST' ))
+@login_required
 def post():
-    form = forms.PostForm()
-    if form.validate_on_submit():
-        models.Post.create(user=g.user._get_current_object(),
-                           content=form.content.data.strip())
-        flash('Message posted!Thanks', "success")
-        return redirect(url_for('index'))
-    return render_template('post.html', form=form)
+	form = forms.PostForm()
+	if form.validate_on_submit():
+		models.Post.create(user = g.user._get_current_object(), content = form.content.data.strip())
+		flash('Message posted!Thanks', "success")
+		return redirect(url_for('index'))
+	return render_template('post.html', form = form )
 
 
+
+@login_required
 @app.route('/stream')
 @app.route('/stream/<username>')
 def stream(username=None):
     template = 'stream.html'
     if username and username != current_user.username:
-        user = models.User.select().where(models.User.username ** username).get()
-        stream = user.posts.limit(100)
+        try:
+            user = models.User.select().where(
+                models.User.username**username).get()
+        except models.DoesNotExist:
+            abort(404)
+        else:
+            stream = user.posts.limit(100)
     else:
         stream = current_user.get_stream().limit(100)
         user = current_user
@@ -112,45 +118,13 @@ def stream(username=None):
         template = 'user_stream.html'
     return render_template(template, stream=stream, user=user)
 
+@app.route('/post/<int:post_id>')
+def view_post(post_id):
+	posts = models.Post.select().where(models.Post.id == post_id)
+	if posts.count() == 0:
+		abort(404)
+	return render_template('stream.html', stream=posts)
 
-@app.route('/follow/<username>')
-@login_required
-def follow(username):
-    try:
-        to_user = models.User.get(models.User.username**username)
-    except models.DoesNotExist:
-        pass
-    else:
-        try:
-            models.Relationship.create(
-                from_user=g.user._get_current_object(),
-                to_user=to_user
-            )
-        except models.IntegrityError:
-            pass
-        else:
-            flash("you now following {}!".format(to_user.username), "success")
-    return redirect(url_for('stream', username=to_user.username))
-
-
-@app.route('/unfollow/<username>')
-@login_required
-def unfollow(username):
-    try:
-        to_user = models.User.get(models.User.username**username)
-    except models.DoesNotExist:
-        pass
-    else:
-        try:
-            models.Relationship.create(
-                from_user=g.user._get_current_object(),
-                to_user=to_user
-            ).delete_instance()
-        except models.IntegrityError:
-            pass
-        else:
-            flash("you've unfollowed {}!".format(to_user.username), "success")
-    return redirect(url_for('stream', username=to_user.username))
 
 if __name__ == '__main__':
     models.initialize()

@@ -3,9 +3,12 @@ import datetime
 from flask_bcrypt import generate_password_hash
 
 from flask_login import UserMixin
-
 import peewee
 from sqlalchemy import ForeignKey
+
+
+
+
 
 DATABASE = peewee.PostgresqlDatabase('network', user="postgres")
 
@@ -98,31 +101,19 @@ class Post(peewee.Model):
         database = DATABASE
         order_by = ('-timestamp',)
 
-
-class Student(UserMixin, peewee.Model):
-    username = peewee.CharField(unique=True)
-    email = peewee.CharField(unique=True)
-    password = peewee.CharField(max_length=100)
-    joined_at = peewee.DateTimeField(default=datetime.datetime.now)
-    is_admin = peewee.BooleanField(default=False)
-
-    class Meta:
-        database = DATABASE
-        order_by = ('-joined_at',)
-
-
-class Relationship(peewee.Model):
-    from_user = ForeignKey(User, related_name="relationships")
-    to_user = ForeignKey(User, related_name="related_to")
-
-    class Meta:
-        database = DATABASE
-        indexes = (
-            (('from_user', 'to_user'), True)
-        )
+#
+# class Relationship(peewee.Model):
+#     from_user = ForeignKey(User, related_name="relationships")
+#     to_user = ForeignKey(User, related_name="related_to")
+#
+#     class Meta:
+#         database = DATABASE
+#         indexes = (
+#             (('from_user', 'to_user'), True)
+#         )
 
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([User, Post, Student], safe=True)
+    DATABASE.create_tables([User, Post], safe=True)
     DATABASE.close()

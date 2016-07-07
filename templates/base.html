@@ -1,54 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>The social network</title>
-    <link rel="stylesheet" href="/static/css/app.css">
-    <link rel="stylesheet" href="/static/css/foundation.css">
+	<meta charset="UTF-8">
+	<title>The social network</title>
+	<link rel="stylesheet" href="/static/css/app.css">
+	<link rel="stylesheet" href="/static/css/foundation.css">
 </head>
+
 <body>
-<header>
-    <div class="row">
-        <div class="small-3 columns">
-            <a href="{{ url_for('index') }}" class="icon-logo"></a>
-        </div>
-         <div class="small-3 columns">
-             <h1>Hello {% if current_user.is_authenticated %} {{ current_user }}</h1>
-                 {% endif %}!</div>
-            <div class="small-3 columns">
-               {% if current_user.is_authenticated %}
-                <a href="{{ url_for('logout') }}" class="icon-power" title="Log out">Log Out </a>
-                {% else %}
-                 <a href="{{ url_for('login') }}" class="icon-power" title="Log in"> Log In</a>
-                 <a href="{{ url_for('register') }}" class="icon-profile" title="Register">Register</a>
-                {% endif %}
-        </div>
+	<header>
+		<div class="row">
+			<div class="small-3 columns">
+				<a href="{{ url_for('index') }}" class="icon-logo"></a>
+			</div>
+			<div class="small-3 columns">
+				<h1>Hello {% if current_user.is_authenticated %} {{ current_user.username }}</h1> {% endif %}!</div>
+			<div class="small-3 columns">
+				{% if current_user.is_authenticated %}
+				<a href="{{ url_for('logout') }}" class="icon-power" title="Log out">Log Out </a> {% else %}
+				<a href="{{ url_for('login') }}" class="icon-power" title="Log in"> Log In</a>
+				<a href="{{ url_for('register') }}" class="icon-profile" title="Register">Register</a> {% endif %}
+			</div>
 
-    </div>
-</header>
-{% with messages = get_flashed_messages(with_categories = True)%}
-    {% if messages %}
-    {% for category, message in messages %}
-    <div class="notification {{ category }}"> {{ message }} </div>
-    {% endfor %}
-    {% endif %}
-{% endwith %}
+		</div>
+	</header>
+	{% with messages = get_flashed_messages(with_categories = True)%} {% if messages %} {% for category, message in messages %}
+	<div class="notification {{ category }}"> {{ message }} </div>
+	{% endfor %} {% endif %} {% endwith %}
 
-<div class="row">
-    <div class="main">
-        <nav>
-            <a href="{{ url_for('index')}}">all</a>
+	<div class="row">
+		<div class="main">
+			<nav>
+				<a href="{{ url_for('index')}}">all</a> {% if current_user.is_authenticated %}
+				<a href="{{ url_for('stream', username=current_user.username) }}">Following</a>
+				<a href="{{ url_for('post') }}" class="new"> Create New post</a> {% endif %}
+			</nav>
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+	<footer>
 
-            {% if current_user.is_authenticated %}
-            <a href="{{ url_for('stream', username=current_user.username) }}" >Following</a>
-            <a href="{{ url_for('post') }}" class="new"> Create New post</a>
-       {% endif %}
-        </nav>
-        {% block content %}{% endblock %}
-    </div>
-</div>
-<footer>
-
-</footer>
+	</footer>
 </body>
+
 </html>
