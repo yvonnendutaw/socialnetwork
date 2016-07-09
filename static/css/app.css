@@ -1,0 +1,500 @@
+body h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-family: 'Amatica SC', cursive;
+	color: whitesmoke;
+	font-size: 60px;
+}
+
+.landing {
+	background-image: url(/static/images/6-Everyday-Things-That-Are-Stressing-You-Out-Socialize-compressor.jpg);
+	height: 54em;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.about {
+	background: red;
+	height: 42em;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.row.row {
+	margin: 0em;
+	padding: 0em;
+	max-width: 100%;
+	min-height: 100%;
+}
+
+body {
+	position: relative;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.5);
+	/*	dim the background*/
+}
+
+.form-4 h1 {
+	font-size: 22px;
+	padding-bottom: 20px;
+}
+
+.form-4 input[type=text],
+.form-4 input[type=password] {
+	/* Size and position */
+	width: 100%;
+	padding: 8px 4px 8px 10px;
+	margin-bottom: 15px;
+	/* Styles */
+	border: 1px solid #4e3043;
+	/* Fallback */
+	border: 1px solid rgba(78, 48, 67, 0.8);
+	background: rgba(0, 0, 0, 0.15);
+	border-radius: 2px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.1);
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	/* Font styles */
+	font-family: 'Raleway', 'Lato', Arial, sans-serif;
+	color: #fff;
+	font-size: 13px;
+}
+
+
+/* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
+
+.form-4 input::-webkit-input-placeholder {
+	color: rgba(37, 21, 26, 0.5);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.form-4 input:-moz-placeholder {
+	color: rgba(37, 21, 26, 0.5);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.form-4 input:-ms-input-placeholder {
+	color: rgba(37, 21, 26, 0.5);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.form-4 input[type=text]:hover,
+.form-4 input[type=password]:hover {
+	border-color: #333;
+}
+
+.form-4 input[type=text]:focus,
+.form-4 input[type=password]:focus,
+.form-4 input[type=submit]:focus {
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(255, 255, 255, 0.15);
+	outline: none;
+}
+
+
+/* Fallback */
+
+.no-boxshadow .form-4 input[type=text]:focus,
+.no-boxshadow .form-4 input[type=password]:focus {
+	outline: 1px solid white;
+}
+
+.form-4 input[type=submit] {
+	/* Size and position */
+	width: 100%;
+	padding: 8px 5px;
+	/* Styles */
+	background: #d31e90;
+	background: -moz-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+	background: -ms-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+	background: -o-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(99, 64, 86, 0.5)), to(rgba(76, 49, 65, 0.7)));
+	background: -webkit-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+	background: linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+	border-radius: 5px;
+	border: 1px solid #4e3043;
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 2px 1px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	/* Font styles */
+	color: white;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+	font-size: 16px;
+	font-weight: bold;
+	font-family: 'Raleway', 'Lato', Arial, sans-serif;
+}
+
+.form-4 input[type=submit]:hover {
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 20px 30px rgba(99, 64, 86, 0.5);
+}
+
+
+/* Fallback */
+
+.no-boxshadow .form-4 input[type=submit]:hover {
+	background: #594642;
+}
+
+.form-4 label {
+	display: none;
+	padding: 0 0 5px 2px;
+	cursor: pointer;
+}
+
+.form-4 label:hover ~ input {
+	border-color: #333;
+}
+
+.no-placeholder .form-4 label {
+	display: block;
+}
+
+.form-4 {
+	background-color: white;
+	border-radius: 10px;
+	margin-top: 10%;
+}
+
+.form-4 {
+	/*	width: 350px;*/
+	/*	margin: 60px auto 31px;*/
+	padding: 10px;
+	position: relative;
+	font-family: 'Raleway', 'Lato', Arial, sans-serif;
+	color: #d00000;
+	text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+}
+
+.landing p {
+	margin-top: 30%;
+	color: whitesmoke;
+}
+
+.form-4 p {
+	margin: 0em;
+	color: maroon;
+}
+
+.main_h {
+	position: fixed;
+	top: 0px;
+	max-height: 70px;
+	z-index: 999;
+	width: 100%;
+	padding-top: 17px;
+	background: none;
+	overflow: hidden;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	opacity: 0;
+	top: -100px;
+	padding-bottom: 6px;
+	font-family: "Montserrat", sans-serif;
+}
+
+@media only screen and (max-width: 766px) {
+	.main_h {
+		padding-top: 25px;
+	}
+}
+
+.open-nav {
+	max-height: 400px !important;
+}
+
+.open-nav .mobile-toggle {
+	transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+}
+
+.sticky {
+	background-color: rgba(255, 255, 255, 0.93);
+	opacity: 1;
+	top: 0px;
+	border-bottom: 1px solid gainsboro;
+}
+
+.logo {
+	width: 50px;
+	font-size: 25px;
+	color: #8f8f8f;
+	text-transform: uppercase;
+	float: left;
+	display: block;
+	margin-top: 0;
+	line-height: 1;
+	margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 766px) {
+	.logo {
+		float: none;
+	}
+}
+
+nav {
+	float: right;
+	width: 60%;
+}
+
+@media only screen and (max-width: 766px) {
+	nav {
+		width: 100%;
+	}
+}
+
+nav ul {
+	list-style: none;
+	overflow: hidden;
+	text-align: right;
+	float: right;
+}
+
+@media only screen and (max-width: 766px) {
+	nav ul {
+		padding-top: 10px;
+		margin-bottom: 22px;
+		float: left;
+		text-align: center;
+		width: 100%;
+	}
+}
+
+nav ul li {
+	display: inline-block;
+	margin-left: 35px;
+	line-height: 1.5;
+}
+
+@media only screen and (max-width: 766px) {
+	nav ul li {
+		width: 100%;
+		padding: 7px 0;
+		margin: 0;
+	}
+}
+
+nav ul a {
+	color: #888888;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+.mobile-toggle {
+	display: none;
+	cursor: pointer;
+	font-size: 20px;
+	position: absolute;
+	right: 22px;
+	top: 0;
+	width: 30px;
+	-webkit-transition: all 200ms ease-in;
+	-moz-transition: all 200ms ease-in;
+	transition: all 200ms ease-in;
+}
+
+@media only screen and (max-width: 766px) {
+	.mobile-toggle {
+		display: block;
+	}
+}
+
+.mobile-toggle span {
+	width: 30px;
+	height: 4px;
+	margin-bottom: 6px;
+	border-radius: 1000px;
+	background: #8f8f8f;
+	display: block;
+}
+
+.row {
+	width: 100%;
+	max-width: 940px;
+	margin: 0 auto;
+	position: relative;
+	padding: 0 2%;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	color: #8f8f8f;
+	background: white;
+	font-family: "Cardo", serif;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 30px;
+	line-height: 1.8;
+	text-transform: uppercase;
+	font-family: "Montserrat", sans-serif;
+}
+
+p {
+	margin-bottom: 20px;
+	font-size: 17px;
+	line-height: 2;
+}
+
+.content {
+	padding: 50px 2% 250px;
+}
+
+.hero {
+	position: relative;
+	background: url(http://www.philippefercha.com/cd/toggle-menu-bg.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	text-align: center;
+	color: #fff;
+	padding-top: 110px;
+	min-height: 500px;
+	letter-spacing: 2px;
+	font-family: "Montserrat", sans-serif;
+}
+
+.hero h1 {
+	font-size: 50px;
+	line-height: 1.3;
+}
+
+.hero h1 span {
+	font-size: 25px;
+	color: #e8f380;
+	border-bottom: 2px solid #e8f380;
+	padding-bottom: 12px;
+	line-height: 3;
+}
+
+.mouse {
+	display: block;
+	margin: 0 auto;
+	width: 26px;
+	height: 46px;
+	border-radius: 13px;
+	border: 2px solid #e8f380;
+	position: absolute;
+	bottom: 40px;
+	position: absolute;
+	left: 50%;
+	margin-left: -26px;
+}
+
+.mouse span {
+	display: block;
+	margin: 6px auto;
+	width: 2px;
+	height: 2px;
+	border-radius: 4px;
+	background: #e8f380;
+	border: 1px solid transparent;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-name: scroll;
+	animation-name: scroll;
+}
+
+@-webkit-keyframes scroll {
+	0% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: translateY(20px);
+		transform: translateY(20px);
+	}
+}
+
+@keyframes scroll {
+	0% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		-ms-transform: translateY(0);
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: translateY(20px);
+		-ms-transform: translateY(20px);
+		transform: translateY(20px);
+	}
+}
+
+li {
+	font-size: inherit;
+	display: inline-block;
+	list-style: none;
+}
+
+.button {
+	display: inline-block;
+	text-align: center;
+	line-height: 1;
+	cursor: pointer;
+	-webkit-appearance: none;
+	transition: background-color .25s ease-out, color .25s ease-out;
+	vertical-align: middle;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: .85em 1em;
+	margin: 0 0 1rem;
+	font-size: 1rem;
+	font-weight: 900;
+	background-color: #e8e8e8;
+	color: #fefefe;
+	width: 100%;
+	border: 1px solid white;
+	color: black;
+	background: rgba(255, 255, 255, 0.44);
+	width: 200px;
+}
+
+.button:hover {
+	color: white;
+	background: rgba(255, 255, 0, 0.5);
+}
+
+.login {
+	margin-left: 20%;
+	width: 200px;
+	color: black;
+}
+
+.text-box {
+	margin-top: 10%;
+}
