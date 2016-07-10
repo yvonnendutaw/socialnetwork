@@ -18,8 +18,8 @@ p {
 }
 
 .about {
-	background: red;
-	height: 42em;
+	background-image: url(http://www.sbs.com.au/news/sites/sbs.com.au.news/files/20100119000291911397-original.jpg);
+	height: 45em;
 	background-attachment: fixed;
 	background-size: cover;
 }
@@ -496,5 +496,9 @@ li {
 }
 
 .text-box {
-	margin-top: 10%;
+	margin-top: 15%;
+}
+
+.text-boxx {
+	margin-top: 15%;
 }
