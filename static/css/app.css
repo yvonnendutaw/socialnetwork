@@ -7,19 +7,19 @@ h6,
 p {
 	font-family: 'Amatica SC', cursive;
 	color: whitesmoke;
-	font-size: 40px;
+	font-size: 60px;
 }
 
 .landing {
 	background-image: url(/static/images/6-Everyday-Things-That-Are-Stressing-You-Out-Socialize-compressor.jpg);
-	height: 45em;
+	height: 40em;
 	background-attachment: fixed;
 	background-size: cover;
 }
 
-.about {
+.icons {
 	background-image: url(http://www.sbs.com.au/news/sites/sbs.com.au.news/files/20100119000291911397-original.jpg);
-	height: 100%;
+	height: 45em;
 	background-attachment: fixed;
 	background-size: cover;
 }
@@ -234,14 +234,14 @@ body {
 }
 
 .logo {
-	width: 50px;
+	width: 100px;
 	font-size: 25px;
 	color: #8f8f8f;
 	text-transform: uppercase;
 	float: left;
 	display: block;
-	margin-top: 0;
-	line-height: 1;
+	margin-top: -15px;
+	line-height: 2;
 	margin-bottom: 10px;
 }
 
@@ -515,10 +515,45 @@ li {
 }
 
 .arrow {
-	margin-top: 5%;
+	margin-top: 2%;
 }
 
 .fa-arrow-down:hover {
 	transition: 1s;
 	color: red;
 }
+
+.material-icons {
+	background-color: rgba(0, 0, 0, 0.75);
+	border-radius: 50%;
+	font-size: 70px;
+	color: whitesmoke;
+	border-spacing: 70px;
+	font-size: 60px;
+	height: 120px;
+	line-height: 75px;
+	width: 120px;
+	margin: 0 5%;
+	padding-left: 4%;
+	margin-top: 10%;
+	padding-top: 3%;
+}
+
+.about h1,
+h6 {
+	font-size: 40px;
+}
+
+.last {
+	background-image: url(https://cdn-media-2.lifehack.org/wp-content/files/2009/02/20090302-social.jpg);
+	height: 40em;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+
+/*
+.last h6 {
+	color: red;
+	font-weight: 900;
+}*/

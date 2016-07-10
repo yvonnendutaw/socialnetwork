@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>The social network</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Amatica+SC" rel="stylesheet">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/css/foundation.min.css">
@@ -24,11 +25,14 @@
 
 		<nav>
 			<ul>
-				<li><a href="{{ url_for('login')}}">LOGIN</a></li>
-				<li><a href="{{url_for('register')}}">REGISTER</a></li>
-
-				<li><a href="">HOME</a></li>
+				<li class="logo"><img src="/static/images/logo.png" alt=""></li>
+				<li><a href="{{ url_for ('home')}}">HOME</a></li>
 				<li><a href="#about">ABOUT</a></li>
+				<li><a href="{{url_for('register')}}">JOIN </a></li>
+				<li><a href="{{ url_for('login')}}">LOGIN</a></li>
+
+
+
 
 			</ul>
 		</nav>
@@ -47,15 +51,16 @@
 						<h1> WHERE EVERYONE IS CONNECTED :)</h1>
 						<ul>
 							<li><a href="{{url_for('register')}}" class="button getstarted ">GET STARTED</a></li>
-							<li><a href="{{ url_for('login')}}" class=" login button ">LOGIN</a></li>
+							<br>
+							<li><a href="{{ url_for('login')}}" class=" loginn button ">LOGIN</a></li>
 						</ul>
 
 					</div>
 					<div class="row">
 						<div class="small-2 arrow small-centered">
-							<h6>
+							<h5>
 						LEARN MORE
-					</h6>
+					</h5>
 							<a href="#about"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
 						</div>
 
@@ -82,12 +87,45 @@
 		</div>
 
 	</div>
-	<div class="row">
-		<div class="icons small-12 large-8 columns large-centered">
 
+	<div class="row">
+		<div class="icons small-12 columns">
+			<div class="overlay">
+				<div class="row">
+
+					<div class=" small-12 text-boxx
+					large-4 get large-centered text-center columns">
+						<h6>   hey! get to chat, <br>share links, quotes and even photos! </h6>
+						<h6> SERIOUSLY YOU COULD PUT ANYTHING HERE</h6>
+					</div>
+				</div>
+
+
+			</div>
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="last small-12 columns">
+			<div class="overlay">
+				<div class="row">
+
+					<div class=" small-12 text-boxx
+					large-8 get large-centered text-center columns">
+						<h6>  Okay maybe we lied, it wasn't hard to explain... <br> so come on in try it ! </h6>
+						<ul>
+							<li><a href="{{url_for('register')}}" class="button getstarted ">GET STARTED</a></li>
+							<br>
+							<li><a href="{{ url_for('login')}}" class=" loginn button ">LOGIN</a></li>
+						</ul>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
 
 	<!--
 			<div class="row">
