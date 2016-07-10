@@ -7,19 +7,19 @@ h6,
 p {
 	font-family: 'Amatica SC', cursive;
 	color: whitesmoke;
-	font-size: 60px;
+	font-size: 40px;
 }
 
 .landing {
 	background-image: url(/static/images/6-Everyday-Things-That-Are-Stressing-You-Out-Socialize-compressor.jpg);
-	height: 54em;
+	height: 45em;
 	background-attachment: fixed;
 	background-size: cover;
 }
 
 .about {
 	background-image: url(http://www.sbs.com.au/news/sites/sbs.com.au.news/files/20100119000291911397-original.jpg);
-	height: 45em;
+	height: 100%;
 	background-attachment: fixed;
 	background-size: cover;
 }
@@ -481,24 +481,44 @@ li {
 	border: 1px solid white;
 	color: black;
 	background: rgba(255, 255, 255, 0.44);
-	width: 200px;
+	width: 150px;
 }
 
 .button:hover {
 	color: white;
-	background: rgba(255, 255, 0, 0.5);
+	background: rgba(0, 0, 0, 0.5);
 }
 
 .login {
 	margin-left: 20%;
-	width: 200px;
+	width: 150px;
 	color: black;
 }
 
+.getstarted {
+	margin-right: 40%;
+}
+
 .text-box {
-	margin-top: 15%;
+	margin-top: 5%;
 }
 
 .text-boxx {
 	margin-top: 15%;
+}
+
+.fa-arrow-down {
+	color: whitesmoke;
+	font-size: 40px;
+	font-weight: 200;
+	margin-left: 40%;
+}
+
+.arrow {
+	margin-top: 5%;
+}
+
+.fa-arrow-down:hover {
+	transition: 1s;
+	color: red;
 }

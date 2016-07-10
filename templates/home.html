@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title>The social network</title>
 	<link href="https://fonts.googleapis.com/css?family=Amatica+SC" rel="stylesheet">
-
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/css/foundation.min.css">
 	<link rel="stylesheet" href="/static/css/app.css">
 	<script src="/static/js/modernizr.custom.63321.js"></script>
@@ -28,7 +28,7 @@
 				<li><a href="{{url_for('register')}}">REGISTER</a></li>
 
 				<li><a href="">HOME</a></li>
-				<li><a href="">ABOUT</a></li>
+				<li><a href="#about">ABOUT</a></li>
 
 			</ul>
 		</nav>
@@ -51,15 +51,25 @@
 						</ul>
 
 					</div>
+					<div class="row">
+						<div class="small-2 arrow small-centered">
+							<h6>
+						LEARN MORE
+					</h6>
+							<a href="#about"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+						</div>
+
+					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="small-12 text-center expanded columns about">
+		<div class="small-12 large-6 large-centered text-center expanded columns about" id="about">
 			<div class="overlay">
-				<div class="text-boxx">
+				<div class=" large-8 columns large-centered text-boxx">
 
 
 
@@ -71,6 +81,11 @@
 			</div>
 		</div>
 
+	</div>
+	<div class="row">
+		<div class="icons small-12 large-8 columns large-centered">
+
+		</div>
 	</div>
 
 
