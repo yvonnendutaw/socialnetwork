@@ -1,7 +1,5 @@
-import datetime
-
 from flask_bcrypt import generate_password_hash
-
+import datetime
 from flask_login import UserMixin
 import peewee
 from sqlalchemy import ForeignKey
