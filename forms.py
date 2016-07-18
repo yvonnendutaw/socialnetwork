@@ -1,9 +1,9 @@
 from flask_wtf import Form
-
 from wtforms import StringField, PasswordField, TextAreaField
-from wtforms.validators import (DataRequired, Regexp, Email,
-                                Length, EqualTo, ValidationError)
-from models import User, UserMixin
+from wtforms.validators import (DataRequired, Regexp, ValidationError, Email,
+                               Length, EqualTo)
+
+from models import User
 
 
 def name_exists(form, field):
@@ -12,8 +12,8 @@ def name_exists(form, field):
 
 
 def email_exists(form, field):
-    if User.select().where(User.username == field.data).exists():
-        raise ValidationError('User with that name already exists.')
+    if User.select().where(User.email == field.data).exists():
+        raise ValidationError('User with that email already exists.')
 
 
 class RegisterForm(Form):
@@ -22,29 +22,30 @@ class RegisterForm(Form):
         validators=[
             DataRequired(),
             Regexp(
-                r'^[ a-zA-Z0-9_]+$',
-                message=("username should be one word, letters, "
-                         " numbers, andd underscores only")
+                r'^[a-zA-Z0-9_]+$',
+                message=("Username should be one word, letters, "
+                         "numbers, and underscores only.")
             ),
-            name_exists])
-
+            name_exists
+        ])
     email = StringField(
-
         'Email',
         validators=[
             DataRequired(),
             Email(),
-            email_exists])
+            email_exists
+        ])
     password = PasswordField(
         'Password',
         validators=[
             DataRequired(),
             Length(min=2),
-            EqualTo('password2', message='Passwordmust match')]
-    )
+            EqualTo('password2', message='Passwords must match')
+        ])
     password2 = PasswordField(
         'Confirm Password',
-        validators=[DataRequired()])
+        validators=[DataRequired()]
+    )
 
 
 class LoginForm(Form):
@@ -53,4 +54,4 @@ class LoginForm(Form):
 
 
 class PostForm(Form):
-  content = TextAreaField("what's app", validators=[DataRequired()])
+    content = TextAreaField("What's up?", validators=[DataRequired()])
