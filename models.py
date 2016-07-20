@@ -48,7 +48,7 @@ class User(UserMixin, peewee.Model):
         )
 
     @classmethod
-    def create_User(cls, username, email, password, admin=False):
+    def create_user(cls, username, email, password, admin=False):
         try:
             cls.create(
                 username=username,

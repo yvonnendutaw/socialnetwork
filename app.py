@@ -32,7 +32,9 @@ def before_request():
     g.db = models.DATABASE
     g.db.connect()
     g.user = current_user
-
+@app.route('/')
+def home():
+	return render_template('home.html')
 
 @app.after_request
 def after_request(response):
@@ -93,7 +95,7 @@ def post():
     return render_template('post.html', form=form)
 
 
-@app.route('/')
+@app.route('/stream')
 def index():
     stream = models.Post.select().limit(100)
     return render_template('stream.html', stream=stream)
@@ -173,7 +175,7 @@ def not_found(error):
 if __name__ == '__main__':
     models.initialize()
     try:
-        models.User.create_User(
+        models.User.create_user(
             username='yvonne',
             email='yvonne@ymail.com',
             password='hello',
