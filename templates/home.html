@@ -19,64 +19,75 @@
 </head>
 
 <body>
+	<div class="overlay">
 
-	<header>
+		<header>
+
+			<div class="row">
+
+				<div class="grid-33">
+
+					<a href="{{ url_for('index') }}" class="icon-logo"></a>
+
+				</div>
+
+				<div class="grid-33">
+
+					<!-- Say Hi -->
+					<h1>Hello{% if current_user.is_authenticated %} {{ current_user.username }}{% endif %}!</h1>
+
+				</div>
+
+				<div class="grid-33">
+
+					<!-- Log in/Log out -->
+					{% if current_user.is_authenticated %}
+					<a href="{{ url_for('logout') }}" class="icon-power" title="Log out"></a>
+					{% else %}
+					<a href="{{ url_for('login') }}" class="icon-power" title="Log in"></a>
+					<a href="{{ url_for('register') }}" class="icon-profile" title="Register"></a>
+					{% endif %}
+
+				</div>
+
+			</div>
+
+		</header>
+
+		<!-- Flash messages -->
+		{% with messages = get_flashed_messages(with_categories=True) %} {% if messages %} {% for category, message in messages %}
+		<div class="notification {{ category }}">{{ message }}</div>
+		{% endfor %} {% endif %} {% endwith %}
+
+
 
 		<div class="row">
 
-			<div class="grid-33">
+			<div class="landing large-12 column text-center text-boxx expanded">
+				<div class="text-box">
+					<h1>WELCOME TO THE LINK</h1>
+					<br>
+					<p>Where you build social networks with people you connect with people of the same interests, career and same activities. </p>
 
-				<a href="{{ url_for('index') }}" class="icon-logo"></a>
+					<a href="{{ url_for('register')}}" class="button">Join the Movement</a>
 
-			</div>
-
-			<div class="grid-33">
-
-				<!-- Say Hi -->
-				<h1>Hello{% if current_user.is_authenticated %} {{ current_user.username }}{% endif %}!</h1>
-
-			</div>
-
-			<div class="grid-33">
-
-				<!-- Log in/Log out -->
-				{% if current_user.is_authenticated %}
-				<a href="{{ url_for('logout') }}" class="icon-power" title="Log out"></a>
-				{% else %}
-				<a href="{{ url_for('login') }}" class="icon-power" title="Log in"></a>
-				<a href="{{ url_for('register') }}" class="icon-profile" title="Register"></a>
-				{% endif %}
-
+				</div>
 			</div>
 
 		</div>
 
-	</header>
 
-	<!-- Flash messages -->
-	{% with messages = get_flashed_messages(with_categories=True) %} {% if messages %} {% for category, message in messages %}
-	<div class="notification {{ category }}">{{ message }}</div>
-	{% endfor %} {% endif %} {% endwith %}
+		<footer>
 
+			<div class="row">
 
-	<div class="row">
-		<div class="landing expanded large-12 columns">
+				<p>A Social App built with Flask
+					<br>by <a href="http://yvonnendutaw.github.io">Yvonne</a> With Love</p>
 
+			</div>
 
-		</div>
+		</footer>
 	</div>
-
-
-	<footer>
-
-		<div class="row">
-
-			<p>A Social App built with Flask
-				<br>by <a href="http://yvonnendutaw.github.io">Yvonne</a> With Love</p>
-
-		</div>
-
-	</footer>
 
 	<script src="/static/js/vendor/disTime.min.js"></script>
 	<script src="/static/js/main.js"></script>
