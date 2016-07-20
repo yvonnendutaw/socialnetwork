@@ -10,13 +10,6 @@ p {
 	font-size: 60px;
 }
 
-.landing {
-	background-image: url(/static/images/6-Everyday-Things-That-Are-Stressing-You-Out-Socialize-compressor.jpg);
-	height: 40em;
-	background-attachment: fixed;
-	background-size: cover;
-}
-
 .icons {
 	background-image: url(http://www.sbs.com.au/news/sites/sbs.com.au.news/files/20100119000291911397-original.jpg);
 	height: 45em;
