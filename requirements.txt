@@ -72,7 +72,7 @@ Jinja2==2.8
 jmespath==0.9.0
 Kivy==1.9.2.dev0
 logutils==0.3.3
-lxml==3.3.3
+lxml==4.6.5
 Mako==1.0.1
 Markdown==2.6.6
 MarkupSafe==0.23
