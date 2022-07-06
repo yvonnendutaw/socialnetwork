@@ -62,7 +62,7 @@ greenlet==0.4.2
 gunicorn==19.6.0
 gyp==0.1
 h5py==2.2.1
-html5lib==0.999
+html5lib==0.999999999
 httplib2==0.8
 humanize==0.5.1
 input-algorithms==0.4.5.4
